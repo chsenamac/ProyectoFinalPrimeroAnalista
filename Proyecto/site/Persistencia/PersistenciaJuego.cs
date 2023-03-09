@@ -71,7 +71,7 @@ namespace Persistencia
                         string admin = (string)oReader["usuarioAdministradorJuego"];
                         Administrador unAdmin=PersistenciaAdministrador.Buscar(admin);
                         List<Pregunta> colPreguntas = PersistenciaPregunta.ListarPreguntasDeUnJuego(codigo);
-                        oJuego = new Juego(codigo,fecha, dificultad, unAdmin, colPreguntas);
+                        oJuego = new Juego(codigo, fecha, dificultad, unAdmin);//, colPreguntas);
                     }
                 }
                 oReader.Close();
@@ -111,7 +111,7 @@ namespace Persistencia
                         string admin = (string)oReader["usuarioAdministradorJuego"];
                         Administrador unAdmin = PersistenciaAdministrador.Buscar(admin);
                         List<Pregunta> colPreguntas = PersistenciaPregunta.ListarPreguntasDeUnJuego(codigo);
-                        Juego oJuego = new Juego(codigo, fecha, dificultad, unAdmin, colPreguntas);
+                        Juego oJuego = new Juego(codigo, fecha, dificultad, unAdmin);//, colPreguntas);
                         coljuego.Add(oJuego);
                     }
                 }
@@ -152,7 +152,7 @@ namespace Persistencia
                         List<Pregunta> colPreguntas = PersistenciaPregunta.ListarPreguntasDeUnJuego(codigo);
                         if (colPreguntas.Count > 0)
                         {
-                            Juego oJuego = new Juego(codigo, fecha, dificultad, unAdmin, colPreguntas);
+                            Juego oJuego = new Juego(codigo, fecha, dificultad, unAdmin);//, colPreguntas);
                             colJuegos.Add(oJuego);
                         }
                     }

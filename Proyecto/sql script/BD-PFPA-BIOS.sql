@@ -28,7 +28,7 @@ create table Juego
 (
 	codigoJuego int identity(1,1),
 	fechaCreacion datetime default getdate(),
-	dificultad varchar(10) check(dificultad in ('facil', 'medio', 'dificil')),
+	dificultad varchar(10) check(dificultad in ('FACIL', 'MEDIO', 'DIFICIL')),
 	usuarioAdministradorJuego varchar(20) not null foreign key references Administrador(nombreUsuario),
 
 	primary key(codigoJuego)
@@ -348,9 +348,9 @@ exec BajaCategoria 'MUSI'
 exec AltaPregunta 'aZ8x7' ,10 , 'Quien descrubrio America?', 3, 'Luis Suarez', 'Cristobal Colon', 'Chino recoba', 'HIST'
 exec AltaPregunta 'ak8ui' ,10 , 'Cuanto es 2 + 2?', 1, '4', '8', '0', 'MATH'
 
-exec AltaJuego 'medio', 'admin'
-exec AltaJuego 'facil', 'admin'
-exec AltaJuego 'dificil', 'admin'
+exec AltaJuego 'MEDIO', 'admin'
+exec AltaJuego 'FACIL', 'admin'
+exec AltaJuego 'DIFICIL', 'admin'
 
 exec AsociarPreguntaJuego 1, 'aZ8x7'
 exec AsociarPreguntaJuego 2, 'aZ8x7'

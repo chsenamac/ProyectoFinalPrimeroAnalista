@@ -89,6 +89,9 @@ namespace Persistencia
         {
 
             Administrador unAdministrador = null;
+            string nombreUsuario;
+            string nombreCompleto;
+            string passUsuario;
 
             SqlConnection oConexion = new SqlConnection(Conexion.Cn);
             SqlCommand oComando = new SqlCommand("LoginAdministrador", oConexion);
@@ -106,9 +109,10 @@ namespace Persistencia
                 {
                     if (oLector.Read())
                     {
-                        unAdministrador = new Administrador(
-                            (string)oLector["nombreUsuario"], (string)oLector["nombreCompleto"],
-                            (string)oLector["passUsuario"]);
+                        nombreUsuario = oLector["nombreUsuario"].ToString();
+                        nombreCompleto = oLector["nombreCompleto"].ToString();
+                        passUsuario = oLector["passUsuario"].ToString();
+                        unAdministrador = new Administrador(nombreUsuario, passUsuario, nombreCompleto);
                     }
                 }
                 oLector.Close();

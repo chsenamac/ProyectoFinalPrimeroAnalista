@@ -29,12 +29,12 @@ public partial class AltaDeUsuarios : System.Web.UI.Page
         {
             string pNomUsuario = txtNombreUsuario.Text.Trim();
             string pNomCompleto = txtNombreCompleto.Text.Trim();
-            string pPassusuario = txtPassUsuario.Text.Trim();
+            string pPassUsuario = txtPassUsuario.Text.Trim();
             string ConfPassUsuario = txtConfPassUsuario.Text.Trim();
 
-            if (pPassusuario == ConfPassUsuario)
+            if (pPassUsuario == ConfPassUsuario)
             {
-                Administrador admin = new Administrador(pNomUsuario, pPassusuario, pNomCompleto);
+                Administrador admin = new Administrador(pNomUsuario, pPassUsuario, pNomCompleto);
                 LogicaAdministrador.Agregar(admin);
 
                 lblError.ForeColor = Color.Green;

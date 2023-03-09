@@ -73,7 +73,7 @@ namespace EntidadesCompartidas
         {
             NombreUsuario = vnombreUsuario;
             Contraseña = vpass;
-            NombreCompleto = vNombreCompleto; //"Nombre completo a prepo";
+            NombreCompleto = vNombreCompleto;
         }
     }
 }
