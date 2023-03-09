@@ -76,19 +76,19 @@ public partial class AltaDePreguntas : System.Web.UI.Page
         rblPuntaje.SelectedIndex = 0;
         rblRespuestaCorrecta.SelectedIndex = 0;
         rblCategorias.SelectedIndex = 0;
+        lblCodigoPregunta.ForeColor = Color.DarkOrange;
         lblCodigoPregunta.Text = GenerarCodigoPregunta();
+        txtTextoPregunta.Focus();
     }
     protected void Page_Load(object sender, EventArgs e)
     {
-
-        lblError.Text = "";
-        lblCodigoPregunta.ForeColor = Color.Blue;
-        lblCodigoPregunta.Text = GenerarCodigoPregunta();
 
         if (!IsPostBack)
         {
             CargarCategorias();
         }
+
+        LimpiarFormulario();
 
     }
 
