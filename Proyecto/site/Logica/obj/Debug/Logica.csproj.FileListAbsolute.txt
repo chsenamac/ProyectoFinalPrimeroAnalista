@@ -1,0 +1,27 @@
+C:\Users\bettina\Desktop\proyecto final\PFPA-Marzo2023\webapp\ObligatorioFinal\Logica\bin\Debug\Logica.dll
+C:\Users\bettina\Desktop\proyecto final\PFPA-Marzo2023\webapp\ObligatorioFinal\Logica\bin\Debug\Logica.pdb
+C:\Users\bettina\Desktop\proyecto final\PFPA-Marzo2023\webapp\ObligatorioFinal\Logica\bin\Debug\EntidadesCompartidas.dll
+C:\Users\bettina\Desktop\proyecto final\PFPA-Marzo2023\webapp\ObligatorioFinal\Logica\bin\Debug\Persistencia.dll
+C:\Users\bettina\Desktop\proyecto final\PFPA-Marzo2023\webapp\ObligatorioFinal\Logica\bin\Debug\EntidadesCompartidas.pdb
+C:\Users\bettina\Desktop\proyecto final\PFPA-Marzo2023\webapp\ObligatorioFinal\Logica\bin\Debug\Persistencia.pdb
+C:\Users\bettina\Desktop\proyecto final\PFPA-Marzo2023\webapp\ObligatorioFinal\Logica\obj\Debug\Logica.csprojResolveAssemblyReference.cache
+C:\Users\bettina\Desktop\proyecto final\PFPA-Marzo2023\webapp\ObligatorioFinal\Logica\obj\Debug\Logica.dll
+C:\Users\bettina\Desktop\proyecto final\PFPA-Marzo2023\webapp\ObligatorioFinal\Logica\obj\Debug\Logica.pdb
+C:\Users\bettina\Desktop\BiosFinal\ProyectoFinalPrimeroAnalista\Proyecto\site\Logica\bin\Debug\Logica.dll
+C:\Users\bettina\Desktop\BiosFinal\ProyectoFinalPrimeroAnalista\Proyecto\site\Logica\bin\Debug\Logica.pdb
+C:\Users\bettina\Desktop\BiosFinal\ProyectoFinalPrimeroAnalista\Proyecto\site\Logica\bin\Debug\EntidadesCompartidas.dll
+C:\Users\bettina\Desktop\BiosFinal\ProyectoFinalPrimeroAnalista\Proyecto\site\Logica\bin\Debug\Persistencia.dll
+C:\Users\bettina\Desktop\BiosFinal\ProyectoFinalPrimeroAnalista\Proyecto\site\Logica\bin\Debug\EntidadesCompartidas.pdb
+C:\Users\bettina\Desktop\BiosFinal\ProyectoFinalPrimeroAnalista\Proyecto\site\Logica\bin\Debug\Persistencia.pdb
+C:\Users\bettina\Desktop\BiosFinal\ProyectoFinalPrimeroAnalista\Proyecto\site\Logica\obj\Debug\Logica.csprojResolveAssemblyReference.cache
+C:\Users\bettina\Desktop\BiosFinal\ProyectoFinalPrimeroAnalista\Proyecto\site\Logica\obj\Debug\Logica.dll
+C:\Users\bettina\Desktop\BiosFinal\ProyectoFinalPrimeroAnalista\Proyecto\site\Logica\obj\Debug\Logica.pdb
+C:\Users\csena\OneDrive\Escritorio\ProyectoFinalPrimeroAnalista\Proyecto\site\Logica\bin\Debug\Logica.dll
+C:\Users\csena\OneDrive\Escritorio\ProyectoFinalPrimeroAnalista\Proyecto\site\Logica\bin\Debug\Logica.pdb
+C:\Users\csena\OneDrive\Escritorio\ProyectoFinalPrimeroAnalista\Proyecto\site\Logica\bin\Debug\EntidadesCompartidas.dll
+C:\Users\csena\OneDrive\Escritorio\ProyectoFinalPrimeroAnalista\Proyecto\site\Logica\bin\Debug\Persistencia.dll
+C:\Users\csena\OneDrive\Escritorio\ProyectoFinalPrimeroAnalista\Proyecto\site\Logica\bin\Debug\EntidadesCompartidas.pdb
+C:\Users\csena\OneDrive\Escritorio\ProyectoFinalPrimeroAnalista\Proyecto\site\Logica\bin\Debug\Persistencia.pdb
+C:\Users\csena\OneDrive\Escritorio\ProyectoFinalPrimeroAnalista\Proyecto\site\Logica\obj\Debug\Logica.csprojResolveAssemblyReference.cache
+C:\Users\csena\OneDrive\Escritorio\ProyectoFinalPrimeroAnalista\Proyecto\site\Logica\obj\Debug\Logica.dll
+C:\Users\csena\OneDrive\Escritorio\ProyectoFinalPrimeroAnalista\Proyecto\site\Logica\obj\Debug\Logica.pdb
