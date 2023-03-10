@@ -39,7 +39,9 @@ public partial class AltaDeJuegos : System.Web.UI.Page
         {
             Administrador admin = (Administrador)Session["Admin"];
             Juego juego = new Juego(0, DateTime.Now, ddlDificultad.SelectedValue, admin);
-            
+
+            LogicaJuego.Agregar(juego);
+
             lblError.ForeColor = Color.Green;
             lblError.Text = "Juego agregado correctamente";
 
@@ -50,10 +52,12 @@ public partial class AltaDeJuegos : System.Web.UI.Page
             lblError.Text = ex.Message;
         }
     }
+
     protected void btnLimpiarFormulario_Click(object sender, EventArgs e)
     {
         LimpiarFormulario();
     }
+
     protected void btnAsociarPreguntas_Click(object sender, EventArgs e)
     {
         Response.Redirect("~/ManejoDePreguntasDeUnJuego.aspx");
