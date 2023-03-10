@@ -1,110 +1,100 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPageAdministrador.master.cs" Inherits="MasterPageAdministrador" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPageAdministrador.master.cs"
+    Inherits="MasterPageAdministrador" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 <html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <title></title>
-    <asp:ContentPlaceHolder id="head" runat="server">
+<head id="Head1" runat="server">
+    <title>PFPA - Capretti - Sena - BIOS 2023</title>
+    <link href="resources/css/general.css" rel="stylesheet" type="text/css" />
+    <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
-    <style type="text/css">
-        .style1
-        {
-            width: 912px;
-            text-align: center;
-        }
-        .style2
-        {
-            height: 53px;
-            text-align: center;
-        }
-        .style3
-        {
-            width: 912px;
-            height: 53px;
-        }
-        .style4
-        {
-            height: 53px;
-            text-align: center;
-            width: 495px;
-        }
-        .style5
-        {
-            width: 495px;
-        }
-    </style>
 </head>
-<body style="font-family: Arial, Helvetica, sans-serif; background-color: #FFFFFF">
+<body>
     <form id="form1" runat="server">
-    <div style="background-color: #FBFBFB; font-family: Arial, Helvetica, sans-serif;">
-        <br />
-        <br />
-        <br />
-        <table style="width:100%;">
-            <tr>
-                <td class="style2">
-                    &nbsp;</td>
-                <td class="style3">
-        <asp:Menu ID="mnuPrincipal" runat="server" BackColor="#F7F6F3" DynamicHorizontalOffset="2" 
-                        Font-Names="Verdana" Font-Size="0.8em" ForeColor="#7C6F57" 
-                        StaticSubMenuIndent="10px">
-            <DynamicHoverStyle BackColor="#7C6F57" ForeColor="White" />
-            <DynamicMenuItemStyle HorizontalPadding="5px" VerticalPadding="2px" />
-            <DynamicMenuStyle BackColor="#F7F6F3" />
-            <DynamicSelectedStyle BackColor="#5D7B9D" />
-            <Items>
-                <asp:MenuItem Text="Menú de administración" 
-                    Value="Menú de administración">
-                    <asp:MenuItem NavigateUrl="~/AltaDeUsuarios.aspx" Text="Alta de Usuarios" 
-                        Value="Alta de Usuarios"></asp:MenuItem>
-                    <asp:MenuItem NavigateUrl="~/ABMCategoriasDePreguntas.aspx" 
-                        Text="ABM Categorias" Value="ABM Categorias"></asp:MenuItem>
-                    <asp:MenuItem NavigateUrl="~/AltaDePreguntas.aspx" Text="Alta Preguntas" 
-                        Value="Alta Preguntas"></asp:MenuItem>
-                    <asp:MenuItem NavigateUrl="~/AltaDeJuegos.aspx" Text="Alta de Juegos" 
-                        Value="Alta de Juegos"></asp:MenuItem>
-                    <asp:MenuItem NavigateUrl="~/ManejoDePreguntasDeUnJuego.aspx" 
-                        Text="Manejo de Preguntas y Juegos" Value="Manejo de Preguntas y Juegos">
-                    </asp:MenuItem>
-                    <asp:MenuItem NavigateUrl="~/ListadoDeJuegos.aspx" Text="Listado de Juegos" 
-                        Value="Listado de Juegos"></asp:MenuItem>
-                    <asp:MenuItem Text="Salir" Value="Salir"></asp:MenuItem>
-                </asp:MenuItem>
-            </Items>
-            <StaticHoverStyle BackColor="#7C6F57" ForeColor="White" />
-            <StaticMenuItemStyle Font-Overline="True" HorizontalPadding="5px" 
-                VerticalPadding="2px" />
-            <StaticSelectedStyle BackColor="#5D7B9D" />
-        </asp:Menu>
-                </td>
-                <td class="style4">
-                    <asp:Label ID="lblUsuario" runat="server" 
-                        style="text-align: center; font-weight: 700; font-style: italic;"></asp:Label>
-                </td>
-                <td class="style2">
-                    <asp:Button ID="btnSalir" runat="server" onclick="btnSalir_Click" 
-                        Text="Salir" Width="120px" />
-                </td>
-            </tr>
+    <table class="Encabezado">
+        <tr>
+            <td>
+                PAGINA DE ADMINISTRACION DEL SISTEMA</td>
+            <td style="text-align: right">
+                <asp:Label ID="lblUsuario" runat="server"></asp:Label>
+            </td>
+            <td>
+                <asp:Button ID="btnSalir" runat="server" OnClick="btnSalir_Click" Text="Salir" />
+            </td>
+        </tr>
+    </table>
+    <table class="Menu">
+        <tr>
+            <td>
+                Menu Principal
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <asp:LinkButton ID="lnkButtonAltaAdministrador" runat="server" 
+                    Font-Size="Small" Font-Underline="False" ForeColor="Black" 
+                    onclick="lnkButtonAltaAdministrador_Click" Width="300px">Alta de usuario administrador</asp:LinkButton>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <asp:LinkButton ID="lnkButtonABMCategorias" runat="server" Font-Size="Small" 
+                    Font-Underline="False" ForeColor="Black" onclick="lnkButtonABMCategorias_Click" 
+                    Width="300px">Mantenimiento de categorias</asp:LinkButton>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <asp:LinkButton ID="lnkButtonAltaPreguntas" runat="server" Font-Size="Small" 
+                    Font-Underline="False" ForeColor="Black" onclick="lnkButtonAltaPreguntas_Click" 
+                    Width="300px">Alta de preguntas</asp:LinkButton>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <asp:LinkButton ID="lnkButtonAltaJuegos" runat="server" Font-Size="Small" 
+                    Font-Underline="False" ForeColor="Black" onclick="lnkButtonAltaJuegos_Click" 
+                    Width="300px">Alta de juegos</asp:LinkButton>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <asp:LinkButton ID="lnkButtonManejoPreguntasJuego" runat="server" 
+                    Font-Size="Small" Font-Underline="False" ForeColor="Black" 
+                    onclick="lnkButtonManejoPreguntasJuego_Click" Width="300px">Manejo de preguntas de un juego</asp:LinkButton>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <asp:LinkButton ID="lnkButtonListadoJuegos" runat="server" Font-Size="Small" 
+                    Font-Underline="False" ForeColor="Black" onclick="lnkButtonListadoJuegos_Click" 
+                    Width="300px">Listado de juegos</asp:LinkButton>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                &nbsp;</td>
+        </tr>
+    </table>
+    <table class="Contenido">
+        <tr>
+            <td>
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                </asp:ContentPlaceHolder>
+            </td>
+        </tr>
             <tr>
                 <td>
-                    &nbsp;</td>
-                <td class="style1">
                     <asp:Label ID="lblError" runat="server"></asp:Label>
                 </td>
-                <td class="style5">
-                    &nbsp;</td>
-                <td>
-                    &nbsp;</td>
-            </tr>
-        </table>
-        <br />
-        <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
-        
-        </asp:ContentPlaceHolder>
-        <br />
-    </div>
+        </tr>
+    </table>
     </form>
+    <table class="Pie">
+        <tr>
+            <td>
+                Proyecto final de primer año - Cristian Capretti - Christiams Sena - Año 2022/23</td>
+        </tr>
+    </table>
 </body>
 </html>

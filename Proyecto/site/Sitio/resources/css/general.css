@@ -1,0 +1,38 @@
+﻿body
+{
+    background-color: #FBFBFB;
+    font-family: Arial, Serif;
+}
+
+.Menu
+{
+    width: 200px;
+    float: left;
+}
+
+.Contenido
+{
+    width: auto;
+    float: left;
+    border-left: thin solid black;
+    padding:1%;
+}
+
+.Encabezado
+{
+    width: 100%;
+    text-align:center;
+    background-color:#9bc4c9;
+    margin-bottom:2%;
+}
+
+.Pie
+{
+    width: 100%;
+    text-align:center;
+    font-size:small;
+    margin-top:2%;
+    background-color:#9bc4c9;
+}
+
+

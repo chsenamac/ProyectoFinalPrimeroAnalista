@@ -26,7 +26,7 @@ public partial class Logueo : System.Web.UI.Page
             if (admin != null)
             {
                 Session["Admin"] = admin;
-                Response.Redirect("AltaDeUsuarios.aspx");
+                Response.Redirect("~/HomeAdministracion.aspx");
             }
             else
             {
