@@ -10,8 +10,8 @@ namespace Persistencia
 {
     public class PersistenciaJugada
     {
-
-        public static void Agregar(Jugada unaJug){
+        public static void Agregar(Jugada unaJug)
+        {
 
             SqlConnection oConexion = new SqlConnection(Conexion.Cn);
             SqlCommand oComando = new SqlCommand("AlmacenarJugada", oConexion);
@@ -49,7 +49,8 @@ namespace Persistencia
             }
         }
 
-        public static List<Jugada> Listar(){
+        public static List<Jugada> Listar()
+        {
             List<Jugada> colJugadas = new List<Jugada>();
             SqlConnection oConexion = new SqlConnection(Conexion.Cn);
             SqlCommand oComando = new SqlCommand("ListarJugadas", oConexion);
@@ -64,14 +65,14 @@ namespace Persistencia
                 {
                     while (oReader.Read())
                     {
-                        long codigo = (int)oReader["codigoJugada"];
-                        DateTime fecha = (DateTime)oReader["fechaHoraJugada"];
+                        int codigo = Convert.ToInt32(oReader["codigoJugada"]);
+                        DateTime fecha = Convert.ToDateTime(oReader["fechaHoraJugada"]);
                         string jugador = oReader["jugador"].ToString();
-                        int puntaje = (int)oReader["respuestaCorrecta"];
-                        long codigoJuego = (long)oReader["codigoJuego"];
-                        Juego oJuego = PersistenciaJuego.Buscar(codigoJuego);
+                        int puntaje = Convert.ToInt32(oReader["puntaje"]);
+                        int codigoJuego = Convert.ToInt32(oReader["codigoJuego"]);
+                        Juego oJuego = PersistenciaJuego.BuscarJuego(codigoJuego);
 
-                        Jugada oJugada = new Jugada(codigo,fecha,jugador,puntaje,oJuego);
+                        Jugada oJugada = new Jugada(codigo, fecha, jugador, puntaje, oJuego);
                         colJugadas.Add(oJugada);
                     }
                 }
@@ -79,7 +80,7 @@ namespace Persistencia
             }
             catch (Exception ex)
             {
-                throw ex;
+                throw new Exception(ex.Message);
             }
             finally
             {
@@ -87,6 +88,49 @@ namespace Persistencia
             }
             return colJugadas;
         }
+        public static List<Jugada> ListarJugadasDeUnJuego(int pCodigoJuego)
+        {
+            List<Jugada> colJugadas = new List<Jugada>();
 
+            SqlConnection oConexion = new SqlConnection(Conexion.Cn);
+            SqlCommand oComando = new SqlCommand("ListarJugadasDeUnJuego", oConexion);
+            oComando.CommandType = CommandType.StoredProcedure;
+
+            oComando.Parameters.AddWithValue("@codigoJuego", pCodigoJuego);
+
+            try
+            {
+                oConexion.Open();
+                SqlDataReader oReader = oComando.ExecuteReader();
+
+                if (oReader.HasRows)
+                {
+                    while (oReader.Read())
+                    {
+                        int codigo = Convert.ToInt32(oReader["codigoJugada"]);
+                        DateTime fecha = Convert.ToDateTime(oReader["fechaHoraJugada"]);
+                        string jugador = oReader["jugador"].ToString();
+                        int puntaje = Convert.ToInt32(oReader["puntaje"]);
+                        int codigoJuego = Convert.ToInt32(oReader["codigoJuego"]);
+
+                        Juego oJuego = PersistenciaJuego.BuscarJuego(codigoJuego);
+
+                        Jugada oJugada = new Jugada(codigo, fecha, jugador, puntaje, oJuego);
+
+                        colJugadas.Add(oJugada);
+                    }
+                }
+                oReader.Close();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                oConexion.Close();
+            }
+            return colJugadas;
+        }
     }
 }

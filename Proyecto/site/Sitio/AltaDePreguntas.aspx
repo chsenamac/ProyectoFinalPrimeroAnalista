@@ -145,7 +145,7 @@
                 Categoria</td>
             <td class="style6">
                 <asp:RadioButtonList ID="rblCategorias" runat="server" DataValueField="Codigo" 
-                    AutoPostBack="True" BorderColor="Black" BorderStyle="Solid" 
+                    BorderColor="Black" BorderStyle="Solid" 
                     BorderWidth="1px" RepeatColumns="3" RepeatDirection="Horizontal">
                 </asp:RadioButtonList>
             </td>

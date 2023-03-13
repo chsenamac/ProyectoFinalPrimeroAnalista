@@ -14,7 +14,6 @@ public partial class AltaDeJuegos : System.Web.UI.Page
 {
     private void LimpiarFormulario()
     {
-        ddlDificultad.SelectedIndex = 0;
         lblError.Text = "";
     }
 
@@ -38,9 +37,11 @@ public partial class AltaDeJuegos : System.Web.UI.Page
         try
         {
             Administrador admin = (Administrador)Session["Admin"];
-            Juego juego = new Juego(0, DateTime.Now, ddlDificultad.SelectedValue, admin);
+            List<Pregunta> colPreguntas = new List<Pregunta>() ;
+            string dificultad = ddlDificultad.SelectedValue;
+            Juego juego = new Juego(0, DateTime.Now, dificultad, admin, colPreguntas);
 
-            LogicaJuego.Agregar(juego);
+            LogicaJuego.AgregarJuego(juego);
 
             lblError.ForeColor = Color.Green;
             lblError.Text = "Juego agregado correctamente";

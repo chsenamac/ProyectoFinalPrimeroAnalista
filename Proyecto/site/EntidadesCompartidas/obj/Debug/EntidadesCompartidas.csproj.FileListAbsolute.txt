@@ -6,3 +6,11 @@ C:\Users\csena\OneDrive\Escritorio\ProyectoFinalPrimeroAnalista\Proyecto\site\En
 C:\Users\csena\OneDrive\Escritorio\ProyectoFinalPrimeroAnalista\Proyecto\site\EntidadesCompartidas\bin\Debug\EntidadesCompartidas.pdb
 C:\Users\csena\OneDrive\Escritorio\ProyectoFinalPrimeroAnalista\Proyecto\site\EntidadesCompartidas\obj\Debug\EntidadesCompartidas.dll
 C:\Users\csena\OneDrive\Escritorio\ProyectoFinalPrimeroAnalista\Proyecto\site\EntidadesCompartidas\obj\Debug\EntidadesCompartidas.pdb
+C:\Users\csena\OneDrive\Escritorio\PFPA\CSENAMAC\Proyecto\site\EntidadesCompartidas\obj\Debug\EntidadesCompartidas.dll
+C:\Users\csena\OneDrive\Escritorio\PFPA\CSENAMAC\Proyecto\site\EntidadesCompartidas\bin\Debug\EntidadesCompartidas.dll
+C:\Users\csena\OneDrive\Escritorio\PFPA\CSENAMAC\Proyecto\site\EntidadesCompartidas\bin\Debug\EntidadesCompartidas.pdb
+C:\Users\csena\OneDrive\Escritorio\PFPA\CSENAMAC\Proyecto\site\EntidadesCompartidas\obj\Debug\EntidadesCompartidas.pdb
+C:\Users\csena\OneDrive\Escritorio\PFPA\RESULTANTE\Proyecto\site\EntidadesCompartidas\bin\Debug\EntidadesCompartidas.dll
+C:\Users\csena\OneDrive\Escritorio\PFPA\RESULTANTE\Proyecto\site\EntidadesCompartidas\bin\Debug\EntidadesCompartidas.pdb
+C:\Users\csena\OneDrive\Escritorio\PFPA\RESULTANTE\Proyecto\site\EntidadesCompartidas\obj\Debug\EntidadesCompartidas.dll
+C:\Users\csena\OneDrive\Escritorio\PFPA\RESULTANTE\Proyecto\site\EntidadesCompartidas\obj\Debug\EntidadesCompartidas.pdb

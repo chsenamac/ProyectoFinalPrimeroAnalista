@@ -13,9 +13,16 @@ namespace Logica
         {
             PersistenciaJugada.Agregar(unaJug);
         }
+        
         public static List<Jugada> Listar() 
         {
             return PersistenciaJugada.Listar();
         }
+
+        public static List<Jugada> ListarJugadasDeUnJuego(int codigoJuego)
+        {
+            return PersistenciaJugada.ListarJugadasDeUnJuego(codigoJuego);
+        }
+
     }
 }

@@ -11,8 +11,9 @@ namespace Persistencia
 {
     public class PersistenciaPregunta
     {
-        public static void Agregar(Pregunta unaPreg){
-            
+        public static void Agregar(Pregunta unaPreg)
+        {
+
             SqlConnection oConexion = new SqlConnection(Conexion.Cn);
             SqlCommand oComando = new SqlCommand("AltaPregunta", oConexion);
             oComando.CommandType = CommandType.StoredProcedure;
@@ -56,8 +57,8 @@ namespace Persistencia
             }
         }
 
-
-        public static Pregunta Buscar(string vCodigo) {
+        public static Pregunta Buscar(string vCodigo)
+        {
             Pregunta oPregunta = null;
 
             SqlConnection oConexion = new SqlConnection(Conexion.Cn);
@@ -80,11 +81,11 @@ namespace Persistencia
                         int respuestaCorrecta = (int)oReader["respuestaCorrecta"];
                         string respuestaUno = (string)oReader["respuestaUno"];
                         string respuestaDos = (string)oReader["respuestaDos"];
-                        string respuestaTres = (string)oReader["respuestaDos"];
-                        string codigoPregunta=(string)oReader["codigoCategoriaPregunta"];
-                        Categoria oCategoria= PersistenciaCategoria.Buscar(codigoPregunta);
-                        oPregunta = new Pregunta(vCodigo, puntaje, texto,respuestaCorrecta, respuestaUno
-                            ,respuestaDos, respuestaTres, oCategoria);
+                        string respuestaTres = (string)oReader["respuestaTres"];
+                        string codigoPregunta = (string)oReader["codigoCategoriaPregunta"];
+                        Categoria oCategoria = PersistenciaCategoria.Buscar(codigoPregunta);
+                        oPregunta = new Pregunta(vCodigo, puntaje, texto, respuestaCorrecta, respuestaUno
+                            , respuestaDos, respuestaTres, oCategoria);
                     }
                 }
                 oReader.Close();
@@ -100,7 +101,8 @@ namespace Persistencia
             return oPregunta;
         }
 
-        public static List<Pregunta> Listar(){
+        public static List<Pregunta> Listar()
+        {
             List<Pregunta> colPreguntas = new List<Pregunta>();
             SqlConnection oConexion = new SqlConnection(Conexion.Cn);
             SqlCommand oComando = new SqlCommand("ListarPreguntas", oConexion);
@@ -123,7 +125,7 @@ namespace Persistencia
                         string preguntaDos = oReader["respuestaDos"].ToString();
                         string preguntaTres = oReader["respuestaTres"].ToString();
                         string codigoCategoria = oReader["codigoCategoriaPregunta"].ToString();
-                      
+
                         Categoria oCategoria = PersistenciaCategoria.Buscar(codigoCategoria);
 
                         Pregunta oPregunta = new Pregunta(codigoPregunta, puntaje, textoPregunta, respuestaCorrecta,
@@ -144,13 +146,15 @@ namespace Persistencia
             return colPreguntas;
         }
 
-        public static List<Pregunta> ListarPreguntasDeUnJuego(long codigoJuego){
+        public static List<Pregunta> ListarPreguntasDeUnJuego(int codigoJuego)
+        {
 
             List<Pregunta> colPreguntas = new List<Pregunta>();
 
             SqlConnection oConexion = new SqlConnection(Conexion.Cn);
-            SqlCommand oComando = new SqlCommand("ListarPreguntasConJuego", oConexion);
+            SqlCommand oComando = new SqlCommand("ListarPreguntasDeUnJuego", oConexion);
             oComando.CommandType = CommandType.StoredProcedure;
+            oComando.Parameters.AddWithValue("@codigoJuego", codigoJuego);
 
             try
             {
@@ -162,7 +166,7 @@ namespace Persistencia
                     while (oReader.Read())
                     {
                         string codigoPregunta = oReader["codigoPregunta"].ToString();
-                        Pregunta oPregunta =Buscar(codigoPregunta);
+                        Pregunta oPregunta = Buscar(codigoPregunta);
                         colPreguntas.Add(oPregunta);
                     }
                 }
@@ -179,6 +183,43 @@ namespace Persistencia
             return colPreguntas;
         }
 
+        public static List<Pregunta> PreguntasNoAsociadasAJuego(Juego juego)
+        {
+            List<Pregunta> colPreguntas = new List<Pregunta>();
+
+            SqlConnection oConexion = new SqlConnection(Conexion.Cn);
+            SqlCommand oComando = new SqlCommand("PreguntasNoAsociadasAJuego", oConexion);
+            oComando.CommandType = CommandType.StoredProcedure;
+            oComando.Parameters.AddWithValue("@codigoJuego", juego.CodigoJuego);
+
+            try
+            {
+                oConexion.Open();
+                SqlDataReader oReader = oComando.ExecuteReader();
+
+                if (oReader.HasRows)
+                {
+                    while (oReader.Read())
+                    {
+                        string codigoPregunta = oReader["codigoPregunta"].ToString();
+                        Pregunta oPregunta = Buscar(codigoPregunta);
+                        colPreguntas.Add(oPregunta);
+                    }
+                }
+                oReader.Close();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                oConexion.Close();
+            }
+            return colPreguntas;
+        }
 
     }
+
 }
+

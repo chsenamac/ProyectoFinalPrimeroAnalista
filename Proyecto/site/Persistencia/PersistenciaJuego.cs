@@ -11,13 +11,14 @@ namespace Persistencia
 {
     public class PersistenciaJuego
     {
-        public static void Agregar(Juego unJuego) {
+        public static void AgregarJuego(Juego unJuego)
+        {
 
             SqlConnection oConexion = new SqlConnection(Conexion.Cn);
             SqlCommand oComando = new SqlCommand("AltaJuego", oConexion);
             oComando.CommandType = CommandType.StoredProcedure;
 
-            oComando.Parameters.AddWithValue("@dificultad", unJuego.Dificultad);
+            oComando.Parameters.AddWithValue("@dificultad", unJuego.Dificultad.ToUpper());
             oComando.Parameters.AddWithValue("@usuarioAdministradorJuego", unJuego.UnAdmin.NombreUsuario);
 
             SqlParameter oRetorno = new SqlParameter("@Retorno", SqlDbType.Int);
@@ -47,7 +48,8 @@ namespace Persistencia
             }
         }
 
-        public static Juego Buscar(long codigo) {
+        public static Juego BuscarJuego(int codigo)
+        {
 
             Juego oJuego = null;
 
@@ -56,7 +58,7 @@ namespace Persistencia
             oComando.CommandType = CommandType.StoredProcedure;
 
             oComando.Parameters.AddWithValue("@codigoJuego", codigo);
-            
+
             try
             {
                 oConexion.Open();
@@ -67,11 +69,12 @@ namespace Persistencia
                     if (oReader.Read())
                     {
                         DateTime fecha = (DateTime)oReader["fechaCreacion"];
-                        string dificultad =(string) oReader["dificultad"];
+                        string dificultad = (string)oReader["dificultad"];
                         string admin = (string)oReader["usuarioAdministradorJuego"];
-                        Administrador unAdmin=PersistenciaAdministrador.Buscar(admin);
+                        Administrador unAdmin = PersistenciaAdministrador.Buscar(admin);
                         List<Pregunta> colPreguntas = PersistenciaPregunta.ListarPreguntasDeUnJuego(codigo);
-                        oJuego = new Juego(codigo, fecha, dificultad, unAdmin);//, colPreguntas);
+
+                        oJuego = new Juego(codigo, fecha, dificultad, unAdmin, colPreguntas);
                     }
                 }
                 oReader.Close();
@@ -85,12 +88,11 @@ namespace Persistencia
                 oConexion.Close();
             }
             return oJuego;
-        
         }
 
         public static List<Juego> ListarTodosLosJuegos()
         {
-            List<Juego> coljuego = new List<Juego>();
+            List<Juego> coljuegos = new List<Juego>();
 
             SqlConnection oConexion = new SqlConnection(Conexion.Cn);
             SqlCommand oComando = new SqlCommand("ListarJuegos", oConexion);
@@ -105,14 +107,14 @@ namespace Persistencia
                 {
                     while (oReader.Read())
                     {
-                        long codigo = (long)oReader["codigoJuego"];
-                        DateTime fecha = (DateTime)oReader["fechaCreacion"];
-                        string dificultad = (string)oReader["dificultad"];
-                        string admin = (string)oReader["usuarioAdministradorJuego"];
+                        int codigoJuego = Convert.ToInt32(oReader["codigoJuego"]);
+                        DateTime fecha = Convert.ToDateTime(oReader["fechaCreacion"]);
+                        string dificultad = oReader["dificultad"].ToString();
+                        string admin = oReader["usuarioAdministradorJuego"].ToString();
                         Administrador unAdmin = PersistenciaAdministrador.Buscar(admin);
-                        List<Pregunta> colPreguntas = PersistenciaPregunta.ListarPreguntasDeUnJuego(codigo);
-                        Juego oJuego = new Juego(codigo, fecha, dificultad, unAdmin);//, colPreguntas);
-                        coljuego.Add(oJuego);
+                        List<Pregunta> colPreguntas = PersistenciaPregunta.ListarPreguntasDeUnJuego(codigoJuego);
+                        Juego oJuego = new Juego(codigoJuego, fecha, dificultad, unAdmin, colPreguntas);
+                        coljuegos.Add(oJuego);
                     }
                 }
                 oReader.Close();
@@ -125,14 +127,16 @@ namespace Persistencia
             {
                 oConexion.Close();
             }
-            return coljuego;   
+
+            return coljuegos;
         }
 
-        public static List<Juego> ListarJuegosConPreguntas() {
+        public static List<Juego> ListarJuegosConPreguntas()
+        {
             List<Juego> colJuegos = new List<Juego>();
 
             SqlConnection oConexion = new SqlConnection(Conexion.Cn);
-            SqlCommand oComando = new SqlCommand("ListarJuegos", oConexion);
+            SqlCommand oComando = new SqlCommand("ListarJuegosConPregunta", oConexion);
             oComando.CommandType = CommandType.StoredProcedure;
 
             try
@@ -144,19 +148,11 @@ namespace Persistencia
                 {
                     while (oReader.Read())
                     {
-                        long codigo = (long)oReader["codigoJuego"];
-                        DateTime fecha = (DateTime)oReader["fechaCreacion"];
-                        string dificultad = (string)oReader["dificultad"];
-                        string admin = (string)oReader["usuarioAdministradorJuego"];
-                        Administrador unAdmin = PersistenciaAdministrador.Buscar(admin);
-                        List<Pregunta> colPreguntas = PersistenciaPregunta.ListarPreguntasDeUnJuego(codigo);
-                        if (colPreguntas.Count > 0)
-                        {
-                            Juego oJuego = new Juego(codigo, fecha, dificultad, unAdmin);//, colPreguntas);
-                            colJuegos.Add(oJuego);
-                        }
+                        int codigoJuego = Convert.ToInt32(oReader["codigoJuego"]);
+                        colJuegos.Add(BuscarJuego(codigoJuego));
                     }
                 }
+
                 oReader.Close();
             }
             catch (Exception ex)
@@ -167,10 +163,12 @@ namespace Persistencia
             {
                 oConexion.Close();
             }
-            return colJuegos;  
+
+            return colJuegos;
         }
 
-        public static void AsociarPreguntaAUnJuego(Juego unJuego, Pregunta unaPregunta){
+        public static void AsociarPreguntaAUnJuego(Juego unJuego, Pregunta unaPregunta)
+        {
 
             SqlConnection oConexion = new SqlConnection(Conexion.Cn);
             SqlCommand oComando = new SqlCommand("AsociarPreguntaJuego", oConexion);
@@ -209,6 +207,7 @@ namespace Persistencia
             }
 
         }
+
         public static void DesacociarPreguntaDeUnJUego(Juego unJuego, Pregunta unaPregunta)
         {
 
@@ -247,7 +246,5 @@ namespace Persistencia
                 oConexion.Close();
             }
         }
-
-
     }
 }

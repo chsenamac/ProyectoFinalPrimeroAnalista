@@ -23,7 +23,7 @@
             <td class="style4">
                 &nbsp;</td>
             <td style="text-align: center">
-                INGRESO DE ADMINISTRADOR</td>
+                ALTA DE USUARIO ADMINISTRADOR</td>
             <td>
                 &nbsp;</td>
         </tr>
@@ -51,9 +51,8 @@
             <td>
                 <asp:TextBox ID="txtPassUsuario" runat="server" Width="300px" 
                     TextMode="Password"></asp:TextBox>
-                <asp:ImageButton ID="imgBtnMostrarPassword" runat="server" Height="25px" 
-                    ImageAlign="Middle" ImageUrl="~/resources/icons/icon.png" 
-                    onclick="imgBtnMostrarPassword_Click" Width="25px" />
+                <asp:CheckBox ID="chkPassAdmin" runat="server" AutoPostBack="True" 
+                    oncheckedchanged="chkPassAdmin_CheckedChanged" Text="Mostrar contraseña" />
             </td>
             <td>
                 &nbsp;</td>
@@ -64,9 +63,9 @@
             <td>
                 <asp:TextBox ID="txtConfPassUsuario" runat="server" Width="300px" 
                     TextMode="Password"></asp:TextBox>
-                <asp:ImageButton ID="imgBtnMostrarConfPassword" runat="server" Height="25px" 
-                    ImageAlign="Middle" ImageUrl="~/resources/icons/icon.png" 
-                    onclick="imgBtnMostrarConfPassword_Click" Width="25px" />
+                <asp:CheckBox ID="chkConfPassAdmin" runat="server" AutoPostBack="True" 
+                    oncheckedchanged="chkConfPassAdmin_CheckedChanged" 
+                    Text="Mostrar confirmacion" />
             </td>
             <td>
                 <asp:Button ID="btnAgregar" runat="server" onclick="btnAgregar_Click" 

@@ -13,6 +13,7 @@ go
 use BDPFPABIOS2023
 go
 
+
 -- Tablas
 create table Administrador
 (
@@ -203,8 +204,6 @@ begin
 		return 1
 	else 
 		return -2
-
-		
 end
 go
 
@@ -268,8 +267,6 @@ begin
 end
 go
 
---AlmacenarJugada (fechaHora [generado automaticamente al momento de terminar el juego]
---                 nombreJugador, juegoJugado, puntajeFinalObtenido [Session])
 create procedure AlmacenarJugada
 @jugador varchar(20),
 @codigoJuego int,
@@ -303,6 +300,16 @@ begin
 end
 go
 
+create procedure ListarJugadasDeUnJuego
+@codigoJuego varchar(5)
+as
+begin
+	select * from Jugada 
+	where codigoJuego = @codigoJuego
+	order by fechaHoraJugada
+end
+go
+
 create procedure ListarAdministradores
 as
 begin
@@ -324,11 +331,57 @@ begin
 end
 go
 
+create procedure ListarPreguntasDeUnJuego
+@codigoJuego varchar(5)
+as
+begin
+	select * from JuegoTienePregunta
+	where codigoJuego = @codigoJuego
+end
+go
+
+create procedure BuscarJuego
+@codigoJuego varchar(5)
+as 
+begin
+	select * from juego where codigoJuego = @codigoJuego
+end
+go
+
 create procedure BuscarPregunta
 @codigoPregunta varchar(5)
 as
 begin
 	select * from Pregunta where codigoPregunta = @CodigoPregunta
+end
+go
+
+create procedure BuscarAdministrador
+@nombreUsuario varchar(20)
+as
+begin
+	select * from Administrador where nombreUsuario = @nombreUsuario
+end
+go
+
+create procedure ListarJuegosConPregunta
+as
+begin
+	select codigoJuego, min(codigoPregunta) 
+	from JuegoTienePregunta
+	group by codigoJuego
+end
+go
+
+create procedure PreguntasNoAsociadasAJuego
+@codigoJuego int
+as
+begin
+
+	select * from Pregunta 
+	where codigoPregunta not in
+	(select codigoPregunta from JuegoTienePregunta where codigoJuego=@codigoJuego);
+
 end
 go
 
@@ -345,26 +398,19 @@ exec AltaCategoria 'DEPO', 'Deportes'
 exec ModificarCategoria 'MATH', 'Matematica'
 exec BajaCategoria 'MUSI'
 
-exec AltaPregunta 'aZ8x7' ,10 , 'Quien descrubrio America?', 3, 'Luis Suarez', 'Cristobal Colon', 'Chino recoba', 'HIST'
-exec AltaPregunta 'ak8ui' ,10 , 'Cuanto es 2 + 2?', 1, '4', '8', '0', 'MATH'
+exec AltaPregunta 'aZ8x7' ,10 , '¿Quien descubrio America?', 3, 'Luis Suarez', 'Cristobal Colon', 'Chino recoba', 'HIST'
+exec AltaPregunta 'ak8ui' ,10 , '¿Cuanto es 2 + 2?', 1, '4', '8', '0', 'MATH'
 
 exec AltaJuego 'MEDIO', 'admin'
 exec AltaJuego 'FACIL', 'admin'
 exec AltaJuego 'DIFICIL', 'admin'
 
 exec AsociarPreguntaJuego 1, 'aZ8x7'
-exec AsociarPreguntaJuego 2, 'aZ8x7'
+exec AsociarPreguntaJuego 2, 'ak8ui'
 exec AsociarPreguntaJuego 1, 'ak8ui'
 
-exec DesasociarPreguntaJuego 2, 'aZ8x7'
+exec DesasociarPreguntaJuego 1, 'ak8ui'
 
 exec AlmacenarJugada 'Christiams Sena', 2, 245
-exec AlmacenarJugada 'Cristian Capretti', 3, 35
-exec AlmacenarJugada 'Paula Sanchez', 1, 1245
-
---Ejecucion de listados
---exec ListarAdministradores
---exec ListarCategorias
---exec ListarPreguntas
---exec ListarJuegos
---exec ListarJugadas
+exec AlmacenarJugada 'Cristian Capretti', 3, 350
+exec AlmacenarJugada 'Inocencio Velazquez', 1, 1245

@@ -12,14 +12,24 @@ using Logica;
 
 public partial class AltaDeUsuarios : System.Web.UI.Page
 {
+    private void LimpiarFormulario()
+    {
+        chkPassAdmin.Checked = false;
+        chkConfPassAdmin.Checked = false;
+        txtNombreUsuario.Text = "";
+        txtNombreCompleto.Text = "";
+        txtPassUsuario.Text = "";
+        txtConfPassUsuario.Text = "";
+        txtNombreUsuario.Focus();
+    }
+
     protected void Page_Load(object sender, EventArgs e)
     {
         lblError.Text = "";
 
         if (!IsPostBack)
         {
-            //no se que va aqui, creo que no hay que cargar nada, lo analizare despues
-            //cuando haga las pruebas.
+            LimpiarFormulario();
         }
     }
     protected void btnAgregar_Click(object sender, EventArgs e)
@@ -50,19 +60,11 @@ public partial class AltaDeUsuarios : System.Web.UI.Page
         catch (Exception ex)
         {
             lblError.ForeColor = Color.Red;
-            lblError.Text = ex.Message; 
+            lblError.Text = ex.Message;
         }
     }
 
-    private void LimpiarFormulario()
-    {
-        txtNombreUsuario.Text = "";
-        txtNombreCompleto.Text = "";
-        txtPassUsuario.Text = "";
-        txtConfPassUsuario.Text = "";
-        txtNombreUsuario.Focus();
-    }
-    protected void imgBtnMostrarPassword_Click(object sender, ImageClickEventArgs e)
+    protected void chkPassAdmin_CheckedChanged(object sender, EventArgs e)
     {
         if (txtPassUsuario.TextMode == TextBoxMode.Password)
         {
@@ -73,8 +75,7 @@ public partial class AltaDeUsuarios : System.Web.UI.Page
             txtPassUsuario.TextMode = TextBoxMode.Password;
         }
     }
-    
-    protected void imgBtnMostrarConfPassword_Click(object sender, ImageClickEventArgs e)
+    protected void chkConfPassAdmin_CheckedChanged(object sender, EventArgs e)
     {
         if (txtConfPassUsuario.TextMode == TextBoxMode.Password)
         {

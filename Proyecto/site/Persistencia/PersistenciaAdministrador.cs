@@ -47,6 +47,7 @@ namespace Persistencia
 
             }
         }
+        
         public static Administrador Buscar( string nombreUsuario) 
         {
 
@@ -85,6 +86,7 @@ namespace Persistencia
             }
             return unAdministrador;
         }
+        
         public static Administrador Login(string pUsu, string pPass)
         {
 

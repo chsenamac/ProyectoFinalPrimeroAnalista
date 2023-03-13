@@ -7,13 +7,13 @@ namespace EntidadesCompartidas
 {
     public class Juego
     {
-        private long codigoJuego;
+        private int codigoJuego;
         private DateTime fechaCreado;
         private string dificultad;
         private Administrador unAdmin;
-        //private List<Pregunta> preguntas;
+        private List<Pregunta> preguntas;
 
-        public long CodigoJuego
+        public int CodigoJuego
         {
 
             get { return codigoJuego; }
@@ -50,26 +50,30 @@ namespace EntidadesCompartidas
                 unAdmin = value;
             }
         }
-        //public List<Pregunta> Preguntas
-        //{
-        //    get { return preguntas; }
-        //    set
-        //    {
-        //        if (value == null)
-        //            throw new Exception("Ingrese una lista de preguntas valida.");
-        //        else
-        //            preguntas = value;
-        //    }
-        //}
-
-        public Juego(long vcodigo, DateTime vfechacreado, string vdificultad, Administrador vunAdmin)//,List<Pregunta> vPreguntas)
+        public List<Pregunta> Preguntas
         {
-
+            get { return preguntas; }
+            set
+            {
+                if (value == null)
+                    throw new Exception("Ingrese una lista de preguntas valida.");
+                else
+                    preguntas = value;
+            }
+        }
+        
+        public virtual string DDLMostrarJuegos
+        {
+            get { return codigoJuego.ToString(); }
+        }
+        
+        public Juego(int vcodigo, DateTime vfechacreado, string vdificultad, Administrador vunAdmin, List<Pregunta> vPreguntas)
+        {
             CodigoJuego = vcodigo;
             FechaCreado = vfechacreado;
             Dificultad = vdificultad;
             UnAdmin = vunAdmin;
-            //Preguntas = vPreguntas;
+            Preguntas = vPreguntas;
         }
     }
 }

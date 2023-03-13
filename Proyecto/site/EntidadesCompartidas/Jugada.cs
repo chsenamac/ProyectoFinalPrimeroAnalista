@@ -7,13 +7,13 @@ namespace EntidadesCompartidas
 {
     public class Jugada
     {
-        private long codigoJugada;
+        private int codigoJugada;
         private DateTime fechaHora;
         private string jugador;
         private int puntaje;
         private Juego unJuego;
 
-        public long CodigoJugada
+        public int CodigoJugada
         {
             get { return codigoJugada; }
             set { codigoJugada = value; }
@@ -39,7 +39,7 @@ namespace EntidadesCompartidas
             get { return puntaje; }
             set
             {
-                if (value > 0)
+                if (value >= 0)
                     puntaje = value;
                 else
                     throw new Exception("El puntaje debe tener un valor mayor a 0");
@@ -57,7 +57,12 @@ namespace EntidadesCompartidas
             }
         }
 
-        public Jugada(long vcodigoJugada, DateTime vFechaHora, string vJugador,
+        public virtual string GvMostrarJugadasDefault
+        {
+            get { return fechaHora.ToString() + " - " + jugador + " - " + puntaje.ToString(); }
+        }
+
+        public Jugada(int vcodigoJugada, DateTime vFechaHora, string vJugador,
             int vPuntaje, Juego vUnJuego)
         {
 

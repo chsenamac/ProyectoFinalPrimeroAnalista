@@ -76,8 +76,6 @@ public partial class AltaDePreguntas : System.Web.UI.Page
         rblPuntaje.SelectedIndex = 0;
         rblRespuestaCorrecta.SelectedIndex = 0;
         rblCategorias.SelectedIndex = 0;
-        lblCodigoPregunta.ForeColor = Color.DarkOrange;
-        lblCodigoPregunta.Text = GenerarCodigoPregunta();
         txtTextoPregunta.Focus();
     }
     protected void Page_Load(object sender, EventArgs e)
@@ -86,10 +84,13 @@ public partial class AltaDePreguntas : System.Web.UI.Page
         if (!IsPostBack)
         {
             CargarCategorias();
+            rblPuntaje.SelectedIndex = 0;
+            rblRespuestaCorrecta.SelectedIndex = 0;
+            rblCategorias.SelectedIndex = 0;
         }
 
-        LimpiarFormulario();
-
+        lblCodigoPregunta.ForeColor = Color.DarkOrange;
+        lblCodigoPregunta.Text = GenerarCodigoPregunta();
     }
 
     protected void btnAgregarPregunta_Click(object sender, EventArgs e)

@@ -16,11 +16,6 @@ namespace EntidadesCompartidas
             get { return nombreUsuario; }
             set
             {
-               /* if (nombreUsuario == "")
-                {
-                    throw new Exception("Error. El nombre de usuario es un campo requerido, no puede estar vacio");
-                } */ 
-               
                 if (value.Trim().Length>0 && value.Trim().Length<= 20)
                 {
                     nombreUsuario = value;
@@ -37,11 +32,6 @@ namespace EntidadesCompartidas
             get { return contraseña; }
             set
             {
-               /* if (contraseña == "")
-                {
-                    throw new Exception("Error. La contraseña es un campo requerido, no puede estar vacio");
-                } */
-
                 if (value.Trim().Length>0 && value.Trim().Length <= 20)
                 {
                     contraseña = value;

@@ -40,7 +40,7 @@ namespace EntidadesCompartidas
             get { return textoPregunta; }
             set
             {
-                if (value.Trim().Length <= 50)
+                if (value.Trim().Length > 0 && value.Trim().Length <= 50)
                     textoPregunta = value;
                 else
                     throw new Exception("Ingrese el texto pregunta");
@@ -64,7 +64,7 @@ namespace EntidadesCompartidas
             get { return preguntaUno; }
             set
             {
-                if (value.Trim().Length <= 50)
+                if (value.Trim().Length > 0 && value.Trim().Length <= 50)
                     preguntaUno = value;
                 else
                     throw new Exception("Ingrese el valor de la pregunta una. El mismo debe contener hasta 50 caracteres");
@@ -76,7 +76,7 @@ namespace EntidadesCompartidas
             get { return preguntaDos; }
             set
             {
-                if (value.Trim().Length <= 50)
+                if (value.Trim().Length > 0 && value.Trim().Length <= 50)
                     preguntaDos = value;
                 else
                     throw new Exception("Ingrese el valor de la pregunta dos. El mismo debe contener hasta 50 caracteres");
@@ -88,7 +88,7 @@ namespace EntidadesCompartidas
             get { return preguntaTres; }
             set
             {
-                if (value.Trim().Length <= 50)
+                if (value.Trim().Length > 0 && value.Trim().Length <= 50)
                     preguntaTres = value;
                 else
                     throw new Exception("Ingrese el valor de la pregunta tres. El mismo puede contener hasta 50 caracteres.");

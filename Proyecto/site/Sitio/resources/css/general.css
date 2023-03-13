@@ -18,6 +18,15 @@
     padding:1%;
 }
 
+.ContenidoJugada
+{
+    width: 80%;
+    float:left;
+    margin-left:10%;
+    margin-right:10%;
+    padding:1%;
+}
+
 .Encabezado
 {
     width: 100%;

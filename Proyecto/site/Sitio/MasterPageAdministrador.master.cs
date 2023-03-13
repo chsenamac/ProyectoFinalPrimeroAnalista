@@ -46,7 +46,6 @@ public partial class MasterPageAdministrador : System.Web.UI.MasterPage
     protected void lnkButtonAltaPreguntas_Click(object sender, EventArgs e)
     {
         Response.Redirect("~/AltaDePreguntas.aspx");
-
     }
     protected void lnkButtonAltaJuegos_Click(object sender, EventArgs e)
     {
